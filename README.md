@@ -1,3 +1,8 @@
+[![npm (scoped)](https://img.shields.io/npm/v/@catnekaise/ghrawel?style=flat-square)](https://www.npmjs.com/package/@catnekaise/ghrawel)
+[![Nuget](https://img.shields.io/nuget/v/Catnekaise.CDK.Ghrawel?style=flat-square)](https://www.nuget.org/packages/Catnekaise.CDK.Ghrawel/)
+[![PyPI](https://img.shields.io/pypi/v/catnekaise.ghrawel?style=flat-square)](https://pypi.org/project/catnekaise.ghrawel/)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/catnekaise/ghrawel?sort=semver&style=flat-square)](https://github.com/catnekaise/ghrawel/releases)
+
 # ghrawel
 `gh`r`aw`el will aim to provide components that help integrate GitHub and AWS using primarily AWS CDK and minimal application code.
 
