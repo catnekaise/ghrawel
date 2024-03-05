@@ -1,17 +1,20 @@
 FROM public.ecr.aws/sam/build-go1.x:latest
 
-ARG GIT_CHECKOUT="main"
 ARG GIT_REPO="https://github.com/catnekaise/ghrawel-tokenprovider-lambda-go.git"
+ARG GIT_CHECKOUT="main"
 
-RUN git clone $GIT_REPO repo
+WORKDIR /var/task
 
-WORKDIR /var/task/repo
+RUN git clone $GIT_REPO repo && cd ./repo && git checkout $GIT_CHECKOUT
 
-RUN cd repo && git checkout $GIT_CHECKOUT
+WORKDIR /var/task/build
 
-COPY go.mod .
-COPY go.sum .
+RUN cp ./../repo/go.* .
 RUN go mod download
-COPY . .
+
+RUN cp -r ./../repo/* .
+
+ARG ARCH="amd64"
+
 ENV GOCACHE=/root/.cache/go-build
-RUN --mount=type=cache,target="/root/.cache/go-build" go build -o /asset/bootstrap ./cmd/default
+RUN --mount=type=cache,target="/root/.cache/go-build" GOOS=linux GOARCH=$ARCH CGO_ENABLED=0 go build -o /asset/bootstrap ./cmd/default

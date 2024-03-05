@@ -129,9 +129,7 @@ export class TokenProviderApi extends Construct implements ITokenProviderApi {
       this._lambda = props.lambda;
     } else {
       this._lambda = new lambda.Function(this, 'Function', {
-        code: lambda.Code.fromDockerBuild(path.join(__dirname, '../../lambda/default'), {
-          platform: 'linux/amd64',
-        }),
+        code: lambda.Code.fromDockerBuild(path.join(__dirname, '../../lambda/default')),
         handler: 'bootstrap',
         runtime: new lambda.Runtime('provided.al2023', lambda.RuntimeFamily.OTHER),
         memorySize: 512,
