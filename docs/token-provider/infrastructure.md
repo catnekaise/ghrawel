@@ -15,9 +15,7 @@ It's not the goal of this library to provide meaningful configuration options fo
 import { ManagedGitHubApps, TokenProviderApi } from '@catnekaise/ghrawel';
 
 const managedLambda = new lambda.Function(stack, 'Function', {
-  code: lambda.Code.fromDockerBuild(path.join(process.cwd(), 'node_modules/@catnekaise/ghrawel/lambda/default/Dockerfile'), {
-    platform: 'linux/amd64',
-  }),
+  code: lambda.Code.fromDockerBuild(path.join(process.cwd(), 'node_modules/@catnekaise/ghrawel/lambda/default/Dockerfile')),
   handler: 'bootstrap',
   runtime: lambda.Runtime.PROVIDED_AL2023,
 
@@ -173,7 +171,6 @@ The default Dockerfile has two arguments that allows specifying which repository
 ```typescript
 new lambda.Function(stack, 'Function', {
   code: lambda.Code.fromDockerBuild(path.join(process.cwd(), 'node_modules/@catnekaise/ghrawel/lambda/default/Dockerfile'), {
-    platform: 'linux/amd64',
     buildArgs: {
       GIT_REPO: 'https://github.com/catnekaise/ghrawel-tokenprovider-lambda-go.git',
       GIT_CHECKOUT: 'main',

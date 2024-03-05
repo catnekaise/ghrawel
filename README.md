@@ -361,7 +361,6 @@ import { ManagedGitHubApps, TokenProviderApi } from '@catnekaise/ghrawel';
 
 const managedLambda = new lambda.Function(stack, 'Function', {
   code: lambda.Code.fromDockerBuild(path.join(process.cwd(), 'node_modules/@catnekaise/ghrawel/lambda/default/Dockerfile'), {
-    platform: 'linux/amd64',
     buildArgs: {
       GIT_REPO: 'https://github.com/catnekaise/example-fork.git',
       GIT_CHECKOUT: 'main',
