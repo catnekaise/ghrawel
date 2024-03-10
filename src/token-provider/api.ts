@@ -1,4 +1,3 @@
-import * as path from 'path';
 import { Annotations, Duration } from 'aws-cdk-lib';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
@@ -6,7 +5,7 @@ import { Construct } from 'constructs';
 import { TokenProviderConfigurator } from './configurator';
 import { TokenProviderTargetRule } from './target';
 import { ITokenProvider, TokenProvider, TokenProviderEndpoint } from './token-provider';
-import { GitHubAppPermissions } from '../';
+import { GitHubAppPermissions, TokenProviderLambdaCode } from '../';
 import { IGitHubApps } from '../apps';
 
 export interface TokenProviderApiProps {
@@ -129,7 +128,7 @@ export class TokenProviderApi extends Construct implements ITokenProviderApi {
       this._lambda = props.lambda;
     } else {
       this._lambda = new lambda.Function(this, 'Function', {
-        code: lambda.Code.fromDockerBuild(path.join(__dirname, '../../lambda/default')),
+        code: TokenProviderLambdaCode.defaultGo(),
         handler: 'bootstrap',
         runtime: new lambda.Runtime('provided.al2023', lambda.RuntimeFamily.OTHER),
         memorySize: 512,
