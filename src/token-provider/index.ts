@@ -3,3 +3,4 @@ export * from './api';
 export * from './configurator';
 export * from './target';
 export * from './gha-abac';
+export * from './lambda-code';

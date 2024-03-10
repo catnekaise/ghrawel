@@ -18,7 +18,6 @@ const managedLambda = new lambda.Function(stack, 'Function', {
   code: lambda.Code.fromDockerBuild(path.join(process.cwd(), 'node_modules/@catnekaise/ghrawel/lambda/default/Dockerfile')),
   handler: 'bootstrap',
   runtime: lambda.Runtime.PROVIDED_AL2023,
-
 });
 
 const managedApi = new apigateway.RestApi(stack, 'RestApi', {});
@@ -153,32 +152,7 @@ key.grantDecrypt(tokenProviderApi.lambdaFunction.grantPrincipal);
 Optionally implement this interface instead of using `ManagedGitHubApps` or `SelfManagedGitHubApps`.
 
 ## Lambda
-
-### Lambda Environment Variables
-The `TokenProviderApi` construct will set two environment variables on the Lambda Function and this includes a customized and provided lambda as seen in [custom setup](#custom-setup) above.
-
-- `SECRETS_STORAGE` - The configured secrets storage type on the provided `IGitHubApps` to `TokenProviderApi`
-- `SECRETS_PREFIX` - Either the default `/catnekaise/github-apps` or the configured prefix on provided `IGitHubApps`
-
-### Lambda Debug Logging
-> At the time of writing no debug logs have been added in the lambda function.
-
-Set the environment variable `DEBUG_LOGGING` to `true` and debug logs will be emitted.
-
-### Docker Build
-The default Dockerfile has two arguments that allows specifying which repository to `git clone` and argument for `git checkout`. The example below includes the default values.
-
-```typescript
-new lambda.Function(stack, 'Function', {
-  code: lambda.Code.fromDockerBuild(path.join(process.cwd(), 'node_modules/@catnekaise/ghrawel/lambda/default/Dockerfile'), {
-    buildArgs: {
-      GIT_REPO: 'https://github.com/catnekaise/ghrawel-tokenprovider-lambda-go.git',
-      GIT_CHECKOUT: 'main',
-    },
-  }),
-});
-```
-
+Read more in [application.md](./application.md).
 
 ### Lambda Outbound Network Requirements
 > https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses

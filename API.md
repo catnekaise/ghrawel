@@ -1939,6 +1939,79 @@ public readonly requestValidator: IRequestValidator;
 
 ---
 
+### TokenProviderLambdaCodeOptions <a name="TokenProviderLambdaCodeOptions" id="@catnekaise/ghrawel.TokenProviderLambdaCodeOptions"></a>
+
+Use this to build a supported the TokenProvider lambda application when the source is located in a public repository.
+
+#### Initializer <a name="Initializer" id="@catnekaise/ghrawel.TokenProviderLambdaCodeOptions.Initializer"></a>
+
+```typescript
+import { TokenProviderLambdaCodeOptions } from '@catnekaise/ghrawel'
+
+const tokenProviderLambdaCodeOptions: TokenProviderLambdaCodeOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@catnekaise/ghrawel.TokenProviderLambdaCodeOptions.property.architecture">architecture</a></code> | <code><a href="#@catnekaise/ghrawel.ApplicationArchitecture">ApplicationArchitecture</a></code> | Should be equal to the architecture configured for the lambda function. |
+| <code><a href="#@catnekaise/ghrawel.TokenProviderLambdaCodeOptions.property.checkout">checkout</a></code> | <code>string</code> | Value for `git checkout` after cloning the repository Example: main, origin/feature1, SHA. |
+| <code><a href="#@catnekaise/ghrawel.TokenProviderLambdaCodeOptions.property.platform">platform</a></code> | <code>string</code> | Value for docker platform Example: linux/amd64. |
+| <code><a href="#@catnekaise/ghrawel.TokenProviderLambdaCodeOptions.property.repository">repository</a></code> | <code>string</code> | Repository Url Example: https://github.com/catnekaise/example-fork.git. |
+
+---
+
+##### `architecture`<sup>Optional</sup> <a name="architecture" id="@catnekaise/ghrawel.TokenProviderLambdaCodeOptions.property.architecture"></a>
+
+```typescript
+public readonly architecture: ApplicationArchitecture;
+```
+
+- *Type:* <a href="#@catnekaise/ghrawel.ApplicationArchitecture">ApplicationArchitecture</a>
+
+Should be equal to the architecture configured for the lambda function.
+
+This value is used to build the application in the specified architecture.
+
+---
+
+##### `checkout`<sup>Optional</sup> <a name="checkout" id="@catnekaise/ghrawel.TokenProviderLambdaCodeOptions.property.checkout"></a>
+
+```typescript
+public readonly checkout: string;
+```
+
+- *Type:* string
+
+Value for `git checkout` after cloning the repository Example: main, origin/feature1, SHA.
+
+---
+
+##### `platform`<sup>Optional</sup> <a name="platform" id="@catnekaise/ghrawel.TokenProviderLambdaCodeOptions.property.platform"></a>
+
+```typescript
+public readonly platform: string;
+```
+
+- *Type:* string
+
+Value for docker platform Example: linux/amd64.
+
+---
+
+##### `repository`<sup>Optional</sup> <a name="repository" id="@catnekaise/ghrawel.TokenProviderLambdaCodeOptions.property.repository"></a>
+
+```typescript
+public readonly repository: string;
+```
+
+- *Type:* string
+
+Repository Url Example: https://github.com/catnekaise/example-fork.git.
+
+---
+
 ### TokenProviderMethodOptions <a name="TokenProviderMethodOptions" id="@catnekaise/ghrawel.TokenProviderMethodOptions"></a>
 
 #### Initializer <a name="Initializer" id="@catnekaise/ghrawel.TokenProviderMethodOptions.Initializer"></a>
@@ -2139,6 +2212,61 @@ public readonly targetRule: TokenProviderTargetRule;
 ---
 
 ## Classes <a name="Classes" id="Classes"></a>
+
+### ApplicationArchitecture <a name="ApplicationArchitecture" id="@catnekaise/ghrawel.ApplicationArchitecture"></a>
+
+Only applicable to TokenProviderLambdaCodeOptions.
+
+Ensure that the lambda function architecture matches.
+
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@catnekaise/ghrawel.ApplicationArchitecture.property.name">name</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@catnekaise/ghrawel.ApplicationArchitecture.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+#### Constants <a name="Constants" id="Constants"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@catnekaise/ghrawel.ApplicationArchitecture.property.ARM_64">ARM_64</a></code> | <code><a href="#@catnekaise/ghrawel.ApplicationArchitecture">ApplicationArchitecture</a></code> | *No description.* |
+| <code><a href="#@catnekaise/ghrawel.ApplicationArchitecture.property.X86_64">X86_64</a></code> | <code><a href="#@catnekaise/ghrawel.ApplicationArchitecture">ApplicationArchitecture</a></code> | *No description.* |
+
+---
+
+##### `ARM_64`<sup>Required</sup> <a name="ARM_64" id="@catnekaise/ghrawel.ApplicationArchitecture.property.ARM_64"></a>
+
+```typescript
+public readonly ARM_64: ApplicationArchitecture;
+```
+
+- *Type:* <a href="#@catnekaise/ghrawel.ApplicationArchitecture">ApplicationArchitecture</a>
+
+---
+
+##### `X86_64`<sup>Required</sup> <a name="X86_64" id="@catnekaise/ghrawel.ApplicationArchitecture.property.X86_64"></a>
+
+```typescript
+public readonly X86_64: ApplicationArchitecture;
+```
+
+- *Type:* <a href="#@catnekaise/ghrawel.ApplicationArchitecture">ApplicationArchitecture</a>
+
+---
 
 ### GitHubApp <a name="GitHubApp" id="@catnekaise/ghrawel.GitHubApp"></a>
 
@@ -2386,6 +2514,61 @@ public readonly repo: string;
 - *Type:* string
 
 ---
+
+
+### TokenProviderLambdaCode <a name="TokenProviderLambdaCode" id="@catnekaise/ghrawel.TokenProviderLambdaCode"></a>
+
+#### Initializers <a name="Initializers" id="@catnekaise/ghrawel.TokenProviderLambdaCode.Initializer"></a>
+
+```typescript
+import { TokenProviderLambdaCode } from '@catnekaise/ghrawel'
+
+new TokenProviderLambdaCode()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@catnekaise/ghrawel.TokenProviderLambdaCode.defaultGo">defaultGo</a></code> | *No description.* |
+| <code><a href="#@catnekaise/ghrawel.TokenProviderLambdaCode.dotnet">dotnet</a></code> | *No description.* |
+
+---
+
+##### `defaultGo` <a name="defaultGo" id="@catnekaise/ghrawel.TokenProviderLambdaCode.defaultGo"></a>
+
+```typescript
+import { TokenProviderLambdaCode } from '@catnekaise/ghrawel'
+
+TokenProviderLambdaCode.defaultGo(options?: TokenProviderLambdaCodeOptions)
+```
+
+###### `options`<sup>Optional</sup> <a name="options" id="@catnekaise/ghrawel.TokenProviderLambdaCode.defaultGo.parameter.options"></a>
+
+- *Type:* <a href="#@catnekaise/ghrawel.TokenProviderLambdaCodeOptions">TokenProviderLambdaCodeOptions</a>
+
+---
+
+##### `dotnet` <a name="dotnet" id="@catnekaise/ghrawel.TokenProviderLambdaCode.dotnet"></a>
+
+```typescript
+import { TokenProviderLambdaCode } from '@catnekaise/ghrawel'
+
+TokenProviderLambdaCode.dotnet(options?: TokenProviderLambdaCodeOptions)
+```
+
+###### `options`<sup>Optional</sup> <a name="options" id="@catnekaise/ghrawel.TokenProviderLambdaCode.dotnet.parameter.options"></a>
+
+- *Type:* <a href="#@catnekaise/ghrawel.TokenProviderLambdaCodeOptions">TokenProviderLambdaCodeOptions</a>
+
+---
+
 
 
 ### TokenProviderPathStrategy <a name="TokenProviderPathStrategy" id="@catnekaise/ghrawel.TokenProviderPathStrategy"></a>

@@ -357,17 +357,16 @@ jobs:
 Read more in [infrastructure](./docs/token-provider/infrastructure.md) and [application](./docs/token-provider/application.md).
 
 ```typescript
-import { ManagedGitHubApps, TokenProviderApi } from '@catnekaise/ghrawel';
+import { ManagedGitHubApps, TokenProviderApi, TokenProviderLambdaCode, ApplicationArchitecture } from '@catnekaise/ghrawel';
 
 const managedLambda = new lambda.Function(stack, 'Function', {
-  code: lambda.Code.fromDockerBuild(path.join(process.cwd(), 'node_modules/@catnekaise/ghrawel/lambda/default/Dockerfile'), {
-    buildArgs: {
-      GIT_REPO: 'https://github.com/catnekaise/example-fork.git',
-      GIT_CHECKOUT: 'main',
-    },
+  code: TokenProviderLambdaCode.dotnet({
+    architecture: ApplicationArchitecture.ARM64,
+    repository: 'https://github.com/catnekaise/example-fork.git',
+    checkout: 'main',
   }),
   handler: 'bootstrap',
-  runtime: lambda.Runtime.PROVIDED_AL2023,
+  runtime: lambda.Runtime.DOTNET_8,
   // Add name, vpc, etc
 });
 
@@ -413,11 +412,9 @@ Here're some additional documentation on various topics:
 - [Infrastructure](./docs/token-provider/infrastructure.md)
     - [Custom Setup](./docs/token-provider/infrastructure.md#custom-setup)
     - [GitHub Apps](./docs/token-provider/infrastructure.md#github-apps)
-    - [Lambda](./docs/token-provider/infrastructure.md#lambda)
 - [Logging](./docs/token-provider/logging.md)
 - [Troubleshooting](./docs/token-provider/README.md#internal-server-error)
 
 
 # Contributions
 Please open issues if having general feedback or if getting stuck on something that was not covered by any documentation. PR's are welcome for bugfixes. For any feature additions, please open an issue for discussion first.
-
